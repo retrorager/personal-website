@@ -1,10 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
-const EMAILJS_SERVICE_ID = process.env.EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
-const WEBSITE_COUNTER_ENDPOINT = process.env.WEBSITE_COUNTER_ENDPOINT;
-
 // Cursor function
 const cursorDot = document.querySelector("[data-cursor-dot]");
 const cursorOutline = document.querySelector("[data-cursor-outline]");
@@ -83,7 +76,7 @@ document
     console.log(templateParams);
 
     // Service ID, Template ID
-    emailjs.send(`${EMAILJS_SERVICE_ID}`, `${EMAILJS_TEMPLATE_ID}`, templateParams).then(
+    emailjs.send("service_90fkpew", "template_e3s923g", templateParams).then(
       function (response) {
         console.log("SUCCESS!", response.status, response.text);
         alert("Message sent successfully!");
@@ -151,7 +144,7 @@ ScrollReveal().reveal(".github", { delay: 1100, origin: "bottom" });
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
   let response = await fetch(
-    `${WEBSITE_COUNTER_ENDPOINT}`
+    "https://7n4jxc552476knaju3lf2nzori0dplha.lambda-url.us-east-1.on.aws/"
   );
   let data = await response.json();
   counter.innerHTML = data;
